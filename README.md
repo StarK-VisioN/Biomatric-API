@@ -15,3 +15,7 @@ MACHINE_PORT=4370                    # Replace with the machine's port
 
 
 # insall kr sagle packages pn
+
+
+
+

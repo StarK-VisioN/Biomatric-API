@@ -41,3 +41,33 @@ app.use('/api/users', userRoutes);
 app.use('/api/attendance', attendanceRoutes);
 
 app.listen(PORT, () => console.log(`🚀 Server running on port ${PORT}`));
+
+
+
+/*
+ How It Works Step-by-Step
+When you start the server:   npm run dev
+
+1. The server connects to the biometric machine via TCP/IP.
+2. You call the custom API using Hoppscotch:
+3. Make a POST request to:   http://localhost:5500/api/biometric/connect
+
+The Custom API Sends Numeric Commands: const command = Buffer.from([0x50, 0x00, 0x00, 0x00]); 
+The server sends the numeric API command:  client.write(command);  
+
+The Machine Sends Binary Data:
+The biometric machine responds with binary attendance data.
+The server decodes and parses it into readable JSON
+
+The custom API automatically saves the attendance records in MongoDB.
+
+
+
+run the server :- nodemon server.js
+Trigger the custom API using Hoppscotch :- POST http://localhost:5500/api/biometric/connect
+Check mongodb :- 
+mongosh
+use biometricDB
+db.attendances.find().pretty()
+
+*/
